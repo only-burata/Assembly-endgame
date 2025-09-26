@@ -7,15 +7,13 @@ import clsx from "clsx"
 export default function App () {
   // state variables
   
-  const test = ["w", "q", "h", "u", "g", "z", "k", "m"]
   const [currentWord, setCurrentWord] = useState(() => getRandomWord())
   const [guessedLetters, setGuessedLetters] = useState([])
   
-
-
-  
-  
+   // constants
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
+// Derived variables
+
   const lastGuess =  guessedLetters[guessedLetters.length - 1]
   const isLastGuessWrong = lastGuess && !getWordArr(currentWord).includes(lastGuess)
   const gameWon = getWordArr(currentWord).every(letter => guessedLetters.includes(letter))
