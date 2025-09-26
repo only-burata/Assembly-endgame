@@ -21,12 +21,13 @@ export default function App () {
 
   const isGameOver = gameLost || gameWon
 
-  
+  // Create chip elements from the list of languages 
   const chips = languages.map((chip, index) => {
     const style = {
       backgroundColor: chip.backgroundColor, 
       color: chip.color
     }
+// conditional class names to the chips
     const className = clsx({
       "chip": true,
       "lost": index < getWrongGuessCount()
@@ -40,7 +41,7 @@ export default function App () {
       >{chip.name}</span>
     )
   })
-
+// to return an array of characters from a word string
   function getWordArr(word) {
     const wordArr = []
     for (let i = 0; i < word.length; i++){
@@ -49,6 +50,7 @@ export default function App () {
     return wordArr
   }
 
+// Spans representing word to be guessed 
   const wordSpans = getWordArr(currentWord).map(
     (letter, id) => {
       const letterMissed = gameLost && !guessedLetters.includes(letter)
@@ -61,7 +63,7 @@ export default function App () {
       )
     } 
   )
-
+// creating keyboard elements 
   const keyboardElements = getWordArr(alphabet).map(
     (letter) => {    
       const isGuessed = guessedLetters.includes(letter)
